@@ -105,4 +105,4 @@ with tab6:
             rec_book = random.choice(matching_books)
             st.info(f"AI Suggestion for you:\n\nTitle: '{rec_book['title']}'\nAuthor: {rec_book['author']}")
         else:
-            st.warning(f"No books available 
+            st.warning("No books available. ") 
