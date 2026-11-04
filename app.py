@@ -10,7 +10,6 @@ from io import BytesIO
 
 st.set_page_config(
     page_title="Smart Library",
-    page_icon="📚",
     layout="wide"
 )
 
@@ -132,7 +131,7 @@ def send_email(to_email, subject, body):
 
 # ---------------- START APPLICATION ----------------
 
-st.title("📚 Smart Library Management System")
+st.title(" Smart Library Management System")
 st.caption("Smart Book Management | Student Records | AI Recommendations")
 
 try:
@@ -161,7 +160,7 @@ menu = st.sidebar.radio(
 # ---------------- HOME DASHBOARD ----------------
 
 if menu == "Home Dashboard":
-    st.header("📊 Library Dashboard")
+    st.header("Library Dashboard")
 
     try:
         b, a, i, s = get_stats()
@@ -195,7 +194,7 @@ if menu == "Home Dashboard":
 # ---------------- ADD NEW BOOK ----------------
 
 elif menu == "Add New Book":
-    st.header("➕ Add New Book")
+    st.header("Add New Book")
 
     with st.form("book_form"):
         book_id = st.text_input("Book ID")
@@ -237,7 +236,7 @@ elif menu == "Add New Book":
 # ---------------- REGISTER STUDENT ----------------
 
 elif menu == "Register Student":
-    st.header("👨‍🎓 Student Registration")
+    st.header(" Student Registration")
 
     with st.form("student_form"):
         name = st.text_input("Student Name")
@@ -264,7 +263,7 @@ elif menu == "Register Student":
 # ---------------- SEARCH BOOKS ----------------
 
 elif menu == "Search Books":
-    st.header("🔎 Search Books")
+    st.header(" Search Books")
 
     search = st.text_input("Enter Book ID, Title, Author or Subject")
 
@@ -288,7 +287,7 @@ elif menu == "Search Books":
     if books:
         for book in books:
             with st.expander(
-                f"📖 {book['title']} | ID: {book['book_id']}"
+                f"{book['title']} | ID: {book['book_id']}"
             ):
                 st.write("**Author:**", book["author"])
                 st.write("**Subject:**", book["subject"])
@@ -303,7 +302,7 @@ elif menu == "Search Books":
 
                 if pdf_result and pdf_result[0]["pdf_data"]:
                     st.download_button(
-                        "📥 Download Book PDF",
+                        " Download Book PDF",
                         data=bytes(pdf_result[0]["pdf_data"]),
                         file_name=book["book_id"] + ".pdf",
                         mime="application/pdf",
@@ -315,7 +314,7 @@ elif menu == "Search Books":
 # ---------------- ISSUE BOOK ----------------
 
 elif menu == "Issue Book":
-    st.header("📤 Issue Book")
+    st.header(" Issue Book")
 
     students = query("SELECT roll_no,name FROM Students")
     books = query("""
@@ -380,7 +379,7 @@ elif menu == "Issue Book":
 # ---------------- RETURN BOOK ----------------
 
 elif menu == "Return Book":
-    st.header("📥 Return Book")
+    st.header("Return Book")
 
     active = query("""
         SELECT I.issue_id,I.roll_no,S.name,I.book_id,
@@ -428,7 +427,7 @@ elif menu == "Return Book":
 # ---------------- ISSUE RECORDS ----------------
 
 elif menu == "Issue Records":
-    st.header("📋 Issue Records")
+    st.header(" Issue Records")
 
     records = query("""
         SELECT I.issue_id,I.roll_no,S.name,I.book_id,B.title,
@@ -453,7 +452,7 @@ elif menu == "Issue Records":
 # ---------------- AI RECOMMENDATIONS ----------------
 
 elif menu == "AI Recommendations":
-    st.header("🤖 AI Book Recommendations")
+    st.header("AI Book Recommendations")
     st.write("Discover books based on subject, tags and popularity.")
 
     students = query("SELECT roll_no,name FROM Students")
@@ -500,7 +499,7 @@ elif menu == "AI Recommendations":
 # ---------------- EMAIL REMINDERS ----------------
 
 elif menu == "Email Reminders":
-    st.header("📧 Due Date Email Reminders")
+    st.header("Due Date Email Reminders")
 
     st.write("Send reminders for books due today or already overdue.")
 
