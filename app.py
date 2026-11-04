@@ -40,7 +40,7 @@ notebook.add(return_page, text="Return")
 notebook.add(ai_page, text="AI Rec")
 
 # ---------------- 1. HOME PAGE ----------------
-ttk.Label(home_page, text="📚 Welcome to Library Manager", font=("Arial", 16, "bold")).pack(pady=20)
+ttk.Label(home_page, text=" Welcome to Library Manager", font=("Arial", 16, "bold")).pack(pady=20)
 stats_label = ttk.Label(home_page, text="", font=("Arial", 12))
 stats_label.pack(pady=20)
 
@@ -53,7 +53,7 @@ def update_home_stats():
 update_home_stats()
 
 # ---------------- 2. ADD NEW BOOK ----------------
-ttk.Label(add_page, text="➕ Add New Book", font=("Arial", 14, "bold")).pack(pady=10)
+ttk.Label(add_page, text=" Add New Book", font=("Arial", 14, "bold")).pack(pady=10)
 
 ttk.Label(add_page, text="Book Title:").pack(pady=2)
 title_entry = ttk.Entry(add_page, width=30)
@@ -84,7 +84,7 @@ def save_book():
 ttk.Button(add_page, text="Save Book", command=save_book).pack(pady=15)
 
 # ---------------- 3. SEARCH BOOK ----------------
-ttk.Label(search_page, text="🔍 Search Books", font=("Arial", 14, "bold")).pack(pady=10)
+ttk.Label(search_page, text=" Search Books", font=("Arial", 14, "bold")).pack(pady=10)
 search_entry = ttk.Entry(search_page, width=30)
 search_entry.pack(pady=5)
 
@@ -97,7 +97,7 @@ def search_book():
     found = False
     for b in books_db:
         if query in b["title"].lower() or query in b["author"].lower() or query in b["genre"].lower():
-            search_result.insert(tk.END, f"📖 Title: {b['title']}\n✍️ Author: {b['author']}\n🏷️ Genre: {b['genre']}\n📌 Status: {b['status']}\n{'-'*30}\n")
+            search_result.insert(tk.END, f" Title: {b['title']}\n Author: {b['author']}\n Genre: {b['genre']}\n Status: {b['status']}\n{'-'*30}\n")
             found = True
     if not found:
         search_result.insert(tk.END, "No books found matching your search.")
@@ -105,7 +105,7 @@ def search_book():
 ttk.Button(search_page, text="Search", command=search_book).pack(pady=5)
 
 # ---------------- 4. ISSUE BOOK ----------------
-ttk.Label(issue_page, text="📤 Issue a Book", font=("Arial", 14, "bold")).pack(pady=10)
+ttk.Label(issue_page, text=" Issue a Book", font=("Arial", 14, "bold")).pack(pady=10)
 ttk.Label(issue_page, text="Enter Book Title to Issue:").pack(pady=5)
 issue_entry = ttk.Entry(issue_page, width=30)
 issue_entry.pack(pady=5)
@@ -128,7 +128,7 @@ def issue_book():
 ttk.Button(issue_page, text="Issue Book", command=issue_book).pack(pady=10)
 
 # ---------------- 5. RETURN BOOK ----------------
-ttk.Label(return_page, text="📥 Return a Book", font=("Arial", 14, "bold")).pack(pady=10)
+ttk.Label(return_page, text=" Return a Book", font=("Arial", 14, "bold")).pack(pady=10)
 ttk.Label(return_page, text="Enter Book Title to Return:").pack(pady=5)
 return_entry = ttk.Entry(return_page, width=30)
 return_entry.pack(pady=5)
@@ -151,7 +151,7 @@ def return_book():
 ttk.Button(return_page, text="Return Book", command=return_book).pack(pady=10)
 
 # ---------------- 6. AI BOOK RECOMMENDATION ----------------
-ttk.Label(ai_page, text="🤖 AI Book Recommendation", font=("Arial", 14, "bold")).pack(pady=10)
+ttk.Label(ai_page, text=" AI Book Recommendation", font=("Arial", 14, "bold")).pack(pady=10)
 ttk.Label(ai_page, text="Select your favourite Genre/Mood:").pack(pady=5)
 
 genre_combobox = ttk.Combobox(ai_page, values=["Fantasy", "Tech", "Mystery", "Thriller"])
@@ -168,7 +168,7 @@ def ai_recommend():
     
     if matching_books:
         rec_book = random.choice(matching_books)
-        ai_result_label.config(text=f"💡 AI Suggestion for you:\n\n📖 '{rec_book['title']}'\n✍️ Written by {rec_book['author']}\n📌 Status: {rec_book['status']}")
+        ai_result_label.config(text=f" AI Suggestion for you:\n\n📖 '{rec_book['title']}'\n Written by {rec_book['author']}\n Status: {rec_book['status']}")
     else:
         ai_result_label.config(text=f"AI could not find any books in the '{selected_genre}' genre right now.\nTry adding one in the 'Add' tab first!")
 
