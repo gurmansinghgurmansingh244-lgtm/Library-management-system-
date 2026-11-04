@@ -133,7 +133,6 @@ def send_email(to_email, subject, body):
 
 st.title(" Smart Library Management System")
 st.caption("Smart Book Management | Student Records | AI Recommendations")
-
 try:
     init_db()
 except Exception as e:
