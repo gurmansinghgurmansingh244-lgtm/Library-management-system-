@@ -135,7 +135,7 @@ st.caption("Smart Book Management | Student Records | AI Recommendations")
 try:
     init_db()
 except Exception as e:
-    st.error("Database connection failed. Check your database settings.")
+    st.error(f"Database connection failed: {e}")
     st.stop()
 
 # ---------------- SIDEBAR ----------------
